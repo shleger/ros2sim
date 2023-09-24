@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-. /opt/ros/iron-base/setup.zsh             
-. ./install/setup.zsh 
-
-gz sim -v 3 lights.sdf --render-engine ogre

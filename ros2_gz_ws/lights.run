@@ -1,0 +1,6 @@
+#!/bin/zsh
+. ~/.local/robo/bin/activate
+. /opt/ros/iron-base/setup.zsh             
+. ./install/setup.zsh 
+
+gz sim -v 3 lights.sdf --render-engine ogre

@@ -1,0 +1,101 @@
+repositories:
+  actuator_msgs:
+    type: git
+    url: git@github.com:rudislabs/actuator_msgs.git
+    version: main
+  interactive_markers:
+    type: git
+    url: https://github.com/ros-visualization/interactive_markers
+    version: iron
+  joint_state_publisher:
+    type: git
+    url: git@github.com:ros/joint_state_publisher.git
+    version: ros2
+  laser_geometry:
+    type: git
+    url: https://github.com/ros-perception/laser_geometry
+    version: iron
+  navigation_msgs:
+    type: git
+    url: git@github.com:ros-planning/navigation_msgs.git
+    version: iron
+  resource_retriever:
+    type: git
+    url: git@github.com:ros/resource_retriever.git
+    version: iron
+  ros_gz:
+    type: git
+    url: https://github.com/gazebosim/ros_gz.git
+    version: iron
+  rqt2/ros-perception/image_common:
+    type: git
+    url: https://github.com/ros-perception/image_common.git
+    version: ros2
+  rqt2/ros-perception/vision_opencv:
+    type: git
+    url: https://github.com/ros-perception/vision_opencv.git
+    version: rolling
+  rqt2/ros2/message_filters:
+    type: git
+    url: https://github.com/ros2/message_filters.git
+    version: master
+  rqt2/rqt2/python_qt_binding:
+    type: git
+    url: https://github.com/ros-visualization/python_qt_binding.git
+    version: iron
+  rqt2/rqt2/qt_gui_core:
+    type: git
+    url: https://github.com/ros-visualization/qt_gui_core.git
+    version: iron
+  rqt2/rqt2/rqt:
+    type: git
+    url: https://github.com/ros-visualization/rqt.git
+    version: iron
+  rqt2/rqt2/rqt_console:
+    type: git
+    url: https://github.com/ros-visualization/rqt_console.git
+    version: iron
+  rqt2/rqt2/rqt_image_view:
+    type: git
+    url: https://github.com/ros-visualization/rqt_image_view.git
+    version: rolling-devel
+  rqt2/rqt2/rqt_msg:
+    type: git
+    url: https://github.com/ros-visualization/rqt_msg.git
+    version: iron
+  rqt2/rqt2/rqt_plot:
+    type: git
+    url: https://github.com/ros-visualization/rqt_plot.git
+    version: iron
+  rqt2/rqt2/rqt_publisher:
+    type: git
+    url: https://github.com/ros-visualization/rqt_publisher.git
+    version: iron
+  rqt2/rqt2/rqt_py_console:
+    type: git
+    url: https://github.com/ros-visualization/rqt_py_console.git
+    version: iron
+  rqt2/rqt2/rqt_service_caller:
+    type: git
+    url: https://github.com/ros-visualization/rqt_service_caller.git
+    version: iron
+  rqt2/rqt2/rqt_shell:
+    type: git
+    url: https://github.com/ros-visualization/rqt_shell.git
+    version: iron
+  rqt2/rqt2/rqt_srv:
+    type: git
+    url: https://github.com/ros-visualization/rqt_srv.git
+    version: iron
+  rqt2/rqt2/rqt_top:
+    type: git
+    url: https://github.com/ros-visualization/rqt_top.git
+    version: crystal-devel
+  rviz:
+    type: git
+    url: git@github.com:ros2/rviz.git
+    version: iron
+  xacro:
+    type: git
+    url: git@github.com:ros/xacro.git
+    version: ros2

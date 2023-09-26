@@ -1,0 +1,33 @@
+repositories:
+  backward_ros:
+    type: git
+    url: https://github.com/pal-robotics/backward_ros
+    version: foxy-devel
+  control_msgs:
+    type: git
+    url: git@github.com:ros-controls/control_msgs.git
+    version: master
+  diagnostics:
+    type: git
+    url: git@github.com:ros/diagnostics.git
+    version: ros2
+  geometry2:
+    type: git
+    url: git@github.com:ros2/geometry2.git
+    version: iron
+  realtime_tools:
+    type: git
+    url: git@github.com:ros-controls/realtime_tools.git
+    version: master
+  ros2_control:
+    type: git
+    url: https://github.com/ros-controls/ros2_control
+    version: master
+  vision_msgs:
+    type: git
+    url: git@github.com:ros-perception/vision_msgs.git
+    version: ros2
+  webots_ros2:
+    type: git
+    url: git@github.com:cyberbotics/webots_ros2.git
+    version: master

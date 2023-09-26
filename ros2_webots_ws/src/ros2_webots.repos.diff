@@ -1,0 +1,101 @@
+........
+=== ./backward_ros (git) ===
+=== ./control_msgs (git) ===
+=== ./diagnostics (git) ===
+=== ./geometry2 (git) ===
+=== ./realtime_tools (git) ===
+=== ./ros2_control (git) ===
+=== ./vision_msgs (git) ===
+=== ./webots_ros2 (git) ===
+diff --git a/webots_ros2_driver/CMakeLists.txt b/webots_ros2_driver/CMakeLists.txt
+index 60dfb0c..a5dd3bc 100644
+--- a/webots_ros2_driver/CMakeLists.txt
++++ b/webots_ros2_driver/CMakeLists.txt
+@@ -4,6 +4,8 @@ project(webots_ros2_driver)
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_BUILD_WITH_INSTALL_RPATH ON)
++set(CMAKE_VERBOSE_MAKEFILE ON)
++
+ 
+ # Check which ROS distribution is used, vision_msgs depends of that
+ if($ENV{ROS_DISTRO} MATCHES "humble")
+@@ -29,21 +31,21 @@ find_package(webots_ros2_msgs REQUIRED)
+ find_package(tinyxml2_vendor REQUIRED)
+ find_package(TinyXML2 REQUIRED)
+ find_package(yaml-cpp REQUIRED)
+-find_package(PythonLibs 3.10 EXACT REQUIRED)
++find_package(PythonLibs 3.11 EXACT REQUIRED)
+ 
+ add_custom_target(compile-lib-controller ALL
+-  COMMAND ${CMAKE_COMMAND} -E env "WEBOTS_HOME=${CMAKE_CURRENT_SOURCE_DIR}/webots" make release -f Makefile > /dev/null 2>&1
++  COMMAND ${CMAKE_COMMAND} -E env "WEBOTS_HOME=${CMAKE_CURRENT_SOURCE_DIR}/webots" make release -f Makefile 
+   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/webots/src/controller
+ )
+ 
+ add_custom_target(compile-lib-vehicle ALL
+-  COMMAND ${CMAKE_COMMAND} -E env "WEBOTS_HOME=${CMAKE_CURRENT_SOURCE_DIR}/webots" make release -f Makefile > /dev/null 2>&1
++  COMMAND ${CMAKE_COMMAND} -E env "WEBOTS_HOME=${CMAKE_CURRENT_SOURCE_DIR}/webots" make release -f Makefile 
+   DEPENDS compile-lib-controller
+   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/webots/projects/default/libraries/vehicle
+ )
+ 
+ add_custom_target(compile-generic-window ALL
+-  COMMAND ${CMAKE_COMMAND} -E env "WEBOTS_HOME=${CMAKE_CURRENT_SOURCE_DIR}/webots" make release -f Makefile > /dev/null 2>&1
++  COMMAND ${CMAKE_COMMAND} -E env "WEBOTS_HOME=${CMAKE_CURRENT_SOURCE_DIR}/webots" make release -f Makefile 
+   DEPENDS compile-lib-controller
+   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/webots/resources/projects/libraries/generic_robot_window
+ )
+diff --git a/webots_ros2_driver/webots/projects/default/libraries/vehicle/Makefile b/webots_ros2_driver/webots/projects/default/libraries/vehicle/Makefile
+index 1fb2c60..d44198f 100644
+--- a/webots_ros2_driver/webots/projects/default/libraries/vehicle/Makefile
++++ b/webots_ros2_driver/webots/projects/default/libraries/vehicle/Makefile
+@@ -17,7 +17,7 @@ space := $(null) $(null)
+ WEBOTS_HOME_PATH?=$(subst $(space),\ ,$(strip $(subst \,/,$(WEBOTS_HOME))))
+ include $(WEBOTS_HOME_PATH)/resources/Makefile.os.include
+ 
+-.PHONY: release debug profile clean c/car c/driver cpp/car cpp/driver python java
++.PHONY: release debug profile clean c/car c/driver python java
+ 
+ release debug profile clean: java python
+ 
+@@ -25,14 +25,6 @@ java: cpp/driver cpp/car
+ 	+@echo "# make" $(MAKECMDGOALS) $@
+ 	+@make -s -C $@ $(MAKECMDGOALS)
+ 
+-cpp/car: cpp/driver c/car
+-	+@echo "# make" $(MAKECMDGOALS) $@
+-	+@make -s -C $@ $(MAKECMDGOALS)
+-
+-cpp/driver: c/driver
+-	+@echo "# make" $(MAKECMDGOALS) $@
+-	+@make -s -C $@ $(MAKECMDGOALS)
+-
+ c/driver: c/car
+ 	+@echo "# make" $(MAKECMDGOALS) $@
+ 	+@make -s -C $@ $(MAKECMDGOALS)
+diff --git a/webots_ros2_driver/webots/resources/projects/libraries/generic_robot_window/Makefile b/webots_ros2_driver/webots/resources/projects/libraries/generic_robot_window/Makefile
+index 970b9af..bb49756 100644
+--- a/webots_ros2_driver/webots/resources/projects/libraries/generic_robot_window/Makefile
++++ b/webots_ros2_driver/webots/resources/projects/libraries/generic_robot_window/Makefile
+@@ -23,4 +23,4 @@ C_SOURCES = $(wildcard *.c)
+ null :=
+ space := $(null) $(null)
+ WEBOTS_HOME_PATH?=$(subst $(space),\ ,$(strip $(subst \,/,$(WEBOTS_HOME))))
+-include $(WEBOTS_HOME_PATH)/resources/Makefile.include
++include $(WEBOTS_HOME)/resources/Makefile.include
+diff --git a/webots_ros2_driver/webots/src/controller/Makefile b/webots_ros2_driver/webots/src/controller/Makefile
+index 6cb48f6..c83b855 100644
+--- a/webots_ros2_driver/webots/src/controller/Makefile
++++ b/webots_ros2_driver/webots/src/controller/Makefile
+@@ -30,10 +30,6 @@ release debug profile clean:
+ 	@echo "#"
+ 	@+make -s -C java $@
+ 	@echo "#"	
+-	@echo "# Matlab controller library ("$@")"
+-	@echo "#"
+-	@+make -s -C matlab $@
+-	@echo "#"	
+ 	@echo "# Controller launcher ("$@")"
+ 	@echo "#"
+ 	@+make -s -C launcher $@
